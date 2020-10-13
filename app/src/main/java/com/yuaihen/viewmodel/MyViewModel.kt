@@ -1,5 +1,6 @@
 package com.yuaihen.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 /**
@@ -8,5 +9,11 @@ import androidx.lifecycle.ViewModel
  */
 class MyViewModel : ViewModel() {
 
-    var number = 0
+    var likeNum: MutableLiveData<Int> = MutableLiveData()
+
+    init {
+        likeNum.value = 0
+    }
+
+
 }

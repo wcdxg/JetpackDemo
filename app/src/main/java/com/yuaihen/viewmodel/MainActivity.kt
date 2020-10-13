@@ -12,20 +12,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        myViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
-                .get(MyViewModel::class.java)
+        myViewModel = ViewModelProvider(this)
+            .get(MyViewModel::class.java)
 
 
-        textView.text = myViewModel.number.toString()
+        myViewModel.likeNum.observe(this, {
+            textView.text = it.toString()
+        })
 
-        button.setOnClickListener {
-            myViewModel.number++
-            textView.text = myViewModel.number.toString()
+        imageButtonLike.setOnClickListener {
+            myViewModel.likeNum.value = myViewModel.likeNum.value?.plus(1)
         }
 
-        button2.setOnClickListener {
-            myViewModel.number += 2
-            textView.text = myViewModel.number.toString()
+        imageButtonDisLike.setOnClickListener {
+            myViewModel.likeNum.value = myViewModel.likeNum.value?.minus(1)
         }
 
     }
