@@ -9,11 +9,18 @@ import androidx.lifecycle.ViewModel
  */
 class MyViewModel : ViewModel() {
 
-    var likeNum: MutableLiveData<Int> = MutableLiveData()
+    var number: MutableLiveData<Int> = MutableLiveData()
 
     init {
-        likeNum.value = 0
+        number.value = 0
     }
 
 
+    fun add() {
+        number.value = number.value?.plus(1)
+    }
+
+    fun min() {
+        number.value = number.value?.minus(1)
+    }
 }
