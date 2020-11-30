@@ -27,6 +27,7 @@ class SaveStateActivity : AppCompatActivity() {
             SaveStateViewModel::class.java
         )
         binding.lifecycleOwner = this
+
     }
 
 }
