@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.yuaihen.viewmodel.R
 
@@ -14,7 +15,9 @@ class NavigationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
-        navController = Navigation.findNavController(this, R.id.fragment)
+
+//        navController = Navigation.findNavController(this, R.id.fragment)
+        navController = supportFragmentManager.findFragmentById(R.id.fragment)?.findNavController()!!
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
