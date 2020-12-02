@@ -1,65 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <data>
 
-        <variable
-            name="data"
-            type="com.yuaihen.viewmodel.MyViewModel" />
-    </data>
+    <Button
+        android:id="@+id/viewModelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ViewModel"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+    <Button
+        android:id="@+id/saveStateViewModelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SaveStateViewModel"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/viewModelBtn"
+        app:layout_constraintStart_toStartOf="@+id/viewModelBtn"
+        app:layout_constraintTop_toBottomOf="@+id/viewModelBtn" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(data.number)}"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.109"
-            tools:text="200"
-            tools:textColor="@color/colorPrimary"
-            tools:visibility="visible" />
+    <Button
+        android:id="@+id/lifeCycleBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LifeCycle"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@+id/navigationBtn"
+        app:layout_constraintTop_toBottomOf="@+id/navigationBtn" />
 
-        <ImageButton
-            android:id="@+id/imageButtonLike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="imageButton"
-            android:onClick="@{()->data.add()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.157"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.475"
-            app:srcCompat="@drawable/ic_baseline_thumb_up_alt_24" />
+    <Button
+        android:id="@+id/navigationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Navigation"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/saveStateViewModelBtn"
+        app:layout_constraintStart_toStartOf="@+id/saveStateViewModelBtn"
+        app:layout_constraintTop_toBottomOf="@+id/saveStateViewModelBtn" />
 
-        <ImageButton
-            android:id="@+id/imageButtonDisLike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="imageButton"
-            android:onClick="@{()->data.min()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.628"
-            app:layout_constraintStart_toEndOf="@+id/imageButtonLike"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.475"
-            app:srcCompat="@drawable/ic_baseline_thumb_down_24" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <Button
+        android:id="@+id/roomBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/lifeCycleBtn"
+        app:layout_constraintTop_toBottomOf="@+id/lifeCycleBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

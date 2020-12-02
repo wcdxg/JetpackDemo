@@ -8,6 +8,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.yuaihen.viewmodel.R
 
+/**
+ * Navigation管理Fragment的切换
+ * 多个Fragment持有同一ViewModel
+ */
 class NavigationActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
