@@ -1,4 +1,4 @@
-# JetPack Demo
+# Jetpack Demo
 
 
 * LiveData
