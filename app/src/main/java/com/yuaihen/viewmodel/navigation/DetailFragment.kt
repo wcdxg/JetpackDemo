@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.yuaihen.viewmodel.R
-import kotlinx.android.synthetic.main.fragment_detail.*
+import com.yuaihen.viewmodel.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
 
@@ -16,13 +18,25 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+
+        val viewModel = ViewModelProvider(activity!!).get(MyViewModel::class.java)
+        val binding: FragmentDetailBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
+        binding.data = viewModel
+        binding.lifecycleOwner = activity
+        binding.button5.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_homeFragment))
+        return binding.root
+//        return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        button3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_homeFragment))
+//        button3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detailFragment_to_homeFragment))
+//        val name = arguments?.getString("name")
+//        textView4.text = name
     }
+
+
 
 }
