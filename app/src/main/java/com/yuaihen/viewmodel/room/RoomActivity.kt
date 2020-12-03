@@ -16,11 +16,11 @@ class RoomActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room)
 
-        val wordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
-        lifecycle.addObserver(wordViewModel)
+        val wordViewModel: WordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
+        lifecycle.addObserver(wordViewModel.wordRepository)
 
 
-        wordViewModel.allWordsLive.observe(this, { words ->
+        wordViewModel.wordRepository.allWordsLive.observe(this, { words ->
             val string = StringBuilder()
             words?.forEach {
                 string.append(it.id).append("_").append(it.chineseMeaning).append(it.word)
@@ -32,21 +32,21 @@ class RoomActivity : AppCompatActivity() {
         insertBtn.setOnClickListener {
             val word = Word("Hello", "你好")
             val word2 = Word("Kotlin", "Android")
-            wordViewModel.insertWordTask(word, word2)
+            wordViewModel.insertWord(word, word2)
         }
 
         updateBtn.setOnClickListener {
             val word = Word("Hello", "世界")
             word.id = 25
-            wordViewModel.updateWordsTask(word)
+            wordViewModel.updateWords(word)
         }
         clearBtn.setOnClickListener {
-            val word = Word("", "")
-            word.id = 25
-            wordViewModel.deleteWordsTask(word)
+            wordViewModel.clearAll()
         }
         deleteBtn.setOnClickListener {
-            wordViewModel.deleteAllWordsTask()
+            val word = Word("", "")
+            word.id = 25
+            wordViewModel.deleteWords(word)
 
         }
     }

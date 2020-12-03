@@ -20,7 +20,7 @@ interface WordDao {
     fun deleteWords(vararg words: Word)
 
     @Query("DELETE FROM WORD")
-    fun deleteAllWords()
+    fun clearAllWords()
 
     @Query("SELECT * FROM WORD ORDER BY id DESC")
 //    fun getAllWords(): List<Word>
