@@ -24,7 +24,7 @@ interface WordDao {
 
     @Query("SELECT * FROM WORD ORDER BY id DESC")
 //    fun getAllWords(): List<Word>
-    fun getAllWords(): LiveData<List<Word>>
+    fun getAllWordsLive(): LiveData<List<Word>>
 
 
 }
