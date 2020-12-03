@@ -1,5 +1,6 @@
 package com.yuaihen.viewmodel.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 /**
@@ -22,5 +23,8 @@ interface WordDao {
     fun deleteAllWords()
 
     @Query("SELECT * FROM WORD ORDER BY id DESC")
-    fun getAllWords(): List<Word>
+//    fun getAllWords(): List<Word>
+    fun getAllWords(): LiveData<List<Word>>
+
+
 }
