@@ -16,22 +16,24 @@ class RoomActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room)
-
+        val wordViewModel: WordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
         recyclerview.layoutManager = LinearLayoutManager(this)
-        val adapter1 = RoomAdapter(true)
-        val adapter2 = RoomAdapter(false)
+        val adapter1 = RoomAdapter(true, wordViewModel)
+        val adapter2 = RoomAdapter(false, wordViewModel)
         recyclerview.adapter = adapter2
         switch1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) recyclerview.adapter = adapter1 else recyclerview.adapter = adapter2
         }
 
-        val wordViewModel: WordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
         lifecycle.addObserver(wordViewModel.wordRepository)
         wordViewModel.wordRepository.allWordsLive.observe(this, { words ->
+            val temp = adapter1.itemCount
             adapter1.setWordsData(words)
-            adapter1.notifyDataSetChanged()
             adapter2.setWordsData(words)
-            adapter2.notifyDataSetChanged()
+            if (temp != words.size) {
+                adapter1.notifyDataSetChanged()
+                adapter2.notifyDataSetChanged()
+            }
         })
 
         insertBtn.setOnClickListener {
@@ -62,20 +64,9 @@ class RoomActivity : AppCompatActivity() {
             }
         }
 
-//        updateBtn.setOnClickListener {
-//            val word = Word("Hello", "世界")
-//            word.id = 25
-//            wordViewModel.updateWords(word)
-//        }
         clearBtn.setOnClickListener {
             wordViewModel.clearAll()
         }
-//        deleteBtn.setOnClickListener {
-//            val word = Word("", "")
-//            word.id = 25
-//            wordViewModel.deleteWords(word)
-//
-//        }
     }
 
 

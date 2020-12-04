@@ -11,11 +11,15 @@ import androidx.room.PrimaryKey
 @Entity
 class Word(
     @ColumnInfo(name = "english_word")
-    var word: String,
+    var englishWord: String,
     @ColumnInfo(name = "chinese_meaning")
     var chineseMeaning: String
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
+
+    @ColumnInfo(name = "chinese_invisible")
+    var chineseInvisible: Boolean = false
+
 
 }

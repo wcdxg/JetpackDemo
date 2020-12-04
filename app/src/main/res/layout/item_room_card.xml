@@ -1,66 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    android:clickable="true">
+    android:layout_marginEnd="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?selectableItemBackground">
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackground">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline10"
+            android:id="@+id/guideline17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="354dp" />
+            app:layout_constraintGuide_percent="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline18"
+            app:layout_constraintStart_toStartOf="@+id/guideline18"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/indexText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="0"
-            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline17"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/engText"
+            android:id="@+id/englishText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:text="TextView"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/chnText"
-            app:layout_constraintStart_toStartOf="@+id/guideline10"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.363" />
+            app:layout_constraintBottom_toTopOf="@+id/chineseText"
+            app:layout_constraintStart_toStartOf="@+id/guideline17"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/chnText"
+            android:id="@+id/chineseText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
             android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/engText"
-            app:layout_constraintTop_toBottomOf="@+id/indexText"
-            app:layout_constraintVertical_bias="0.421" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/englishText"
+            app:layout_constraintTop_toBottomOf="@+id/englishText" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="36dp"
+        <Switch
+            android:id="@+id/chineseSwitch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+            app:layout_constraintStart_toEndOf="@+id/divider3"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
+

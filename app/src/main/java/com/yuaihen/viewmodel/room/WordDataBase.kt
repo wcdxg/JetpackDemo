@@ -4,12 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 /**
  * Created by Yuaihen.
  * on 2020/12/3
  */
-@Database(entities = [Word::class], version = 1, exportSchema = false)
+@Database(entities = [Word::class], version = 4, exportSchema = false)
 abstract class WordDatabase : RoomDatabase() {
 
     abstract fun getWordDao(): WordDao
@@ -30,8 +32,16 @@ abstract class WordDatabase : RoomDatabase() {
                 WordDatabase::class.java,
                 "word_database"
             )
-//                .allowMainThreadQueries()
+                //破坏式迁移数据库
+                .fallbackToDestructiveMigration()
+//                .addMigrations(MIGRATION_3_4)
                 .build()
+        }
+
+        val MIGRATION_3_4: Migration = object : Migration(3, 4) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE word ADD COLUMN chinese_invisible INTEGER NOT NULL DEFAULT 1")
+            }
         }
     }
 }
