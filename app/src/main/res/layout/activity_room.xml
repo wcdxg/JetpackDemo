@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,9 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
@@ -19,53 +21,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="TextView"
-            android:textSize="26sp" />
+            android:layout_height="0dp" />
     </ScrollView>
 
     <Button
         android:id="@+id/insertBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="84dp"
         android:text="insert"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/switch1"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline12" />
-
-    <Button
-        android:id="@+id/updateBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:text="Update"
-        app:layout_constraintBottom_toBottomOf="@+id/insertBtn"
-        app:layout_constraintStart_toEndOf="@+id/insertBtn"
-        app:layout_constraintTop_toTopOf="@+id/insertBtn"
-        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/clearBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
         android:text="clear"
-        app:layout_constraintStart_toStartOf="@+id/insertBtn"
-        app:layout_constraintTop_toBottomOf="@+id/insertBtn" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/switch1"
+        app:layout_constraintTop_toTopOf="@+id/insertBtn" />
 
-    <Button
-        android:id="@+id/deleteBtn"
+    <Switch
+        android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="delete"
-        app:layout_constraintBottom_toBottomOf="@+id/clearBtn"
-        app:layout_constraintStart_toStartOf="@+id/updateBtn"
-        app:layout_constraintTop_toTopOf="@+id/clearBtn"
-        app:layout_constraintVertical_bias="1.0" />
+        android:text="CardView"
+        app:layout_constraintBottom_toBottomOf="@+id/insertBtn"
+        app:layout_constraintEnd_toStartOf="@+id/clearBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/insertBtn"
+        app:layout_constraintTop_toTopOf="@+id/insertBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

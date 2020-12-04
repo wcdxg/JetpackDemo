@@ -2,6 +2,8 @@ package com.yuaihen.viewmodel.room
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.cancel
 
 /**
  * Created by Yuaihen.
