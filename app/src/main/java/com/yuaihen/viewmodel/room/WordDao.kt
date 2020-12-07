@@ -1,6 +1,7 @@
 package com.yuaihen.viewmodel.room
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 /**
@@ -26,5 +27,7 @@ interface WordDao {
 //    fun getAllWords(): List<Word>
     fun getAllWordsLive(): LiveData<List<Word>>
 
+    @Query("SELECT * FROM WORD WHERE english_word LIKE :pattern ORDER BY ID DESC")
+    fun findWordsWithPattern(pattern: String): LiveData<List<Word>>
 
 }

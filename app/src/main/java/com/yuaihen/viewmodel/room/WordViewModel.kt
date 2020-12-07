@@ -2,8 +2,7 @@ package com.yuaihen.viewmodel.room
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.cancel
+import androidx.lifecycle.LiveData
 
 /**
  * Created by Yuaihen.
@@ -13,20 +12,29 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
 
     val wordRepository = WordRepository(application)
 
-     fun insertWord(vararg words: Word) {
+    fun insertWord(vararg words: Word) {
         wordRepository.insertWord(*words)
     }
 
-     fun updateWords(vararg words: Word) {
+    fun updateWords(vararg words: Word) {
         wordRepository.updateWords(*words)
     }
 
-     fun deleteWords(vararg words: Word) {
+    fun deleteWords(vararg words: Word) {
         wordRepository.deleteWords(*words)
     }
 
-     fun clearAll() {
+    fun clearAll() {
         wordRepository.clearAll()
     }
+
+    suspend fun findWordsWithPattern(pattern: String): LiveData<List<Word>> {
+        return wordRepository.findWordsWithPattern(pattern)
+    }
+
+    fun getAllWordsLive(): LiveData<List<Word>> {
+        return wordRepository.allWordsLive
+    }
+
 
 }

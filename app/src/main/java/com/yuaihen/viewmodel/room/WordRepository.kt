@@ -20,6 +20,12 @@ class WordRepository(application: Application) : LifecycleObserver, CoroutineSco
     private var wordDao = wordDatabase.getWordDao()
     var allWordsLive: LiveData<List<Word>> = wordDao.getAllWordsLive()
 
+    suspend fun findWordsWithPattern(pattern: String): LiveData<List<Word>> {
+        return withContext(Dispatchers.IO) {
+            wordDao.findWordsWithPattern("%${pattern}%")
+        }
+    }
+
     fun insertWord(vararg words: Word) {
         launch {
             withContext(Dispatchers.IO) {
