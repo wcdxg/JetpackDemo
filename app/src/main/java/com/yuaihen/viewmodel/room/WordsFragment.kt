@@ -1,5 +1,7 @@
 package com.yuaihen.viewmodel.room
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
@@ -27,8 +29,8 @@ class WordsFragment : Fragment(), CoroutineScope {
         get() = job + Dispatchers.Main
     private lateinit var filteredWords: LiveData<List<Word>>
     private lateinit var wordViewModel: WordViewModel
-    private lateinit var adapter1: RoomAdapter
-    private lateinit var adapter2: RoomAdapter
+    private lateinit var cardViewAdapter: RoomAdapter
+    private lateinit var normalAdapter: RoomAdapter
 
     init {
         setHasOptionsMenu(true)
@@ -47,19 +49,26 @@ class WordsFragment : Fragment(), CoroutineScope {
         super.onActivityCreated(savedInstanceState)
         wordViewModel = ViewModelProvider(activity!!).get(WordViewModel::class.java)
         recyclerview.layoutManager = LinearLayoutManager(context)
-        adapter1 = RoomAdapter(true, wordViewModel)
-        adapter2 = RoomAdapter(false, wordViewModel)
-        recyclerview.adapter = adapter1
+        cardViewAdapter = RoomAdapter(true, wordViewModel)
+        normalAdapter = RoomAdapter(false, wordViewModel)
+
+        val shp = activity?.getSharedPreferences(VIEW_TYPE_SHP, Context.MODE_PRIVATE)
+        val isCardViewType = shp?.getBoolean(IS_USING_CARD_VIEW, false)
+        if (isCardViewType!!) {
+            recyclerview.adapter = cardViewAdapter
+        } else {
+            recyclerview.adapter = normalAdapter
+        }
         lifecycle.addObserver(wordViewModel.wordRepository)
 
         filteredWords = wordViewModel.getAllWordsLive()
         filteredWords.observe(activity!!) { words ->
-            val temp = adapter1.itemCount
-            adapter1.setWordsData(words)
-            adapter2.setWordsData(words)
+            val temp = cardViewAdapter.itemCount
+            cardViewAdapter.setWordsData(words)
+            normalAdapter.setWordsData(words)
             if (temp != words.size) {
-                adapter1.notifyDataSetChanged()
-                adapter2.notifyDataSetChanged()
+                cardViewAdapter.notifyDataSetChanged()
+                normalAdapter.notifyDataSetChanged()
             }
         }
 
@@ -81,12 +90,12 @@ class WordsFragment : Fragment(), CoroutineScope {
                     filteredWords.removeObservers(activity!!)
                     filteredWords = wordViewModel.findWordsWithPattern(pattern)
                     filteredWords.observe(activity!!) { words ->
-                        val temp = adapter1.itemCount
-                        adapter1.setWordsData(words)
-                        adapter2.setWordsData(words)
+                        val temp = cardViewAdapter.itemCount
+                        cardViewAdapter.setWordsData(words)
+                        normalAdapter.setWordsData(words)
                         if (temp != words.size) {
-                            adapter1.notifyDataSetChanged()
-                            adapter2.notifyDataSetChanged()
+                            cardViewAdapter.notifyDataSetChanged()
+                            normalAdapter.notifyDataSetChanged()
                         }
                     }
                 }
@@ -97,8 +106,44 @@ class WordsFragment : Fragment(), CoroutineScope {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.clearData -> {
+                AlertDialog.Builder(activity)
+                    .setTitle("清空数据")
+                    .setPositiveButton(
+                        "确定"
+                    ) { _, _ -> wordViewModel.clearAll() }
+                    .setNegativeButton(
+                        "取消"
+                    ) { _, _ -> }
+                    .create()
+                    .show()
+            }
+            R.id.switchView -> {
+                val shp = activity?.getSharedPreferences(VIEW_TYPE_SHP, Context.MODE_PRIVATE)
+                val isCardViewType = shp?.getBoolean(IS_USING_CARD_VIEW, false)
+                val editor = shp?.edit()
+                if (isCardViewType!!) {
+                    recyclerview.adapter = normalAdapter
+                    editor?.putBoolean(IS_USING_CARD_VIEW, false)
+                } else {
+                    recyclerview.adapter = cardViewAdapter
+                    editor?.putBoolean(IS_USING_CARD_VIEW, true)
+                }
+                editor?.apply()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         job.cancel()
+    }
+
+    companion object {
+        const val VIEW_TYPE_SHP = "view_type_shp"
+        const val IS_USING_CARD_VIEW = "is_using_card_view"
     }
 }
