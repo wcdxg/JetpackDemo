@@ -9,9 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.yuaihen.viewmodel.R
 import kotlinx.android.synthetic.main.fragment_words.*
+import kotlinx.android.synthetic.main.item_room_card.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -49,6 +52,24 @@ class WordsFragment : Fragment(), CoroutineScope {
         super.onActivityCreated(savedInstanceState)
         wordViewModel = ViewModelProvider(activity!!).get(WordViewModel::class.java)
         recyclerview.layoutManager = LinearLayoutManager(context)
+        recyclerview.itemAnimator = object : DefaultItemAnimator() {
+            override fun onAnimationFinished(viewHolder: RecyclerView.ViewHolder) {
+                super.onAnimationFinished(viewHolder)
+                val linearLayoutManager = recyclerview.layoutManager as LinearLayoutManager?
+                linearLayoutManager?.let { manager ->
+                    val firstPosition = manager.findFirstVisibleItemPosition()
+                    val lastPosition = manager.findLastVisibleItemPosition()
+                    for (index in firstPosition..lastPosition) {
+                        val myViewHolder =
+                            recyclerview.findViewHolderForAdapterPosition(index) as RoomAdapter.MyViewHolder?
+                        myViewHolder?.let { holder ->
+                            holder.itemView.indexText.text = index.plus(1).toString()
+                        }
+                    }
+                }
+            }
+        }
+
         cardViewAdapter = RoomAdapter(true, wordViewModel)
         normalAdapter = RoomAdapter(false, wordViewModel)
 
@@ -64,14 +85,13 @@ class WordsFragment : Fragment(), CoroutineScope {
         filteredWords = wordViewModel.getAllWordsLive()
         filteredWords.observe(activity!!) { words ->
             val temp = cardViewAdapter.itemCount
-            cardViewAdapter.setWordsData(words)
-            normalAdapter.setWordsData(words)
             if (temp != words.size) {
-                cardViewAdapter.notifyDataSetChanged()
-                normalAdapter.notifyDataSetChanged()
+                cardViewAdapter.submitList(words)
+                normalAdapter.submitList(words)
+
+                recyclerview.smoothScrollBy(0, -200)
             }
         }
-
         floatingActionButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_wordsFragment_to_addFragment))
     }
 
@@ -91,11 +111,9 @@ class WordsFragment : Fragment(), CoroutineScope {
                     filteredWords = wordViewModel.findWordsWithPattern(pattern)
                     filteredWords.observe(activity!!) { words ->
                         val temp = cardViewAdapter.itemCount
-                        cardViewAdapter.setWordsData(words)
-                        normalAdapter.setWordsData(words)
                         if (temp != words.size) {
-                            cardViewAdapter.notifyDataSetChanged()
-                            normalAdapter.notifyDataSetChanged()
+                            cardViewAdapter.submitList(words)
+                            normalAdapter.submitList(words)
                         }
                     }
                 }
