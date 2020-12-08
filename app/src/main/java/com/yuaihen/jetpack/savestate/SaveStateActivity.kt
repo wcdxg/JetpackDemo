@@ -1,12 +1,12 @@
-package com.yuaihen.viewmodel.savestate
+package com.yuaihen.jetpack.savestate
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
-import com.yuaihen.viewmodel.R
-import com.yuaihen.viewmodel.databinding.ActivitySaveStateBinding
+import com.yuaihen.jetpack.R
+import com.yuaihen.jetpack.databinding.ActivitySaveStateBinding
 
 /**
  * Created by Yuaihen.

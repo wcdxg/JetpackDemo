@@ -1,7 +1,6 @@
-package com.yuaihen.viewmodel.room
+package com.yuaihen.jetpack.room
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 /**

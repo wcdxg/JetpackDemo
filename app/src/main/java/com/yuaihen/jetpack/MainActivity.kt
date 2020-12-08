@@ -1,14 +1,14 @@
-package com.yuaihen.viewmodel
+package com.yuaihen.jetpack
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.yuaihen.viewmodel.lifecycle.LifeCycleActivity
-import com.yuaihen.viewmodel.navigation.NavigationActivity
-import com.yuaihen.viewmodel.room.RoomActivity
-import com.yuaihen.viewmodel.savestate.SaveStateActivity
-import com.yuaihen.viewmodel.score.ScoreActivity
+import com.yuaihen.jetpack.lifecycle.LifeCycleActivity
+import com.yuaihen.jetpack.navigation.NavigationActivity
+import com.yuaihen.jetpack.room.RoomActivity
+import com.yuaihen.jetpack.savestate.SaveStateActivity
+import com.yuaihen.jetpack.score.ScoreActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

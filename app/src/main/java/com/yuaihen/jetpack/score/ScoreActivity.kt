@@ -1,12 +1,12 @@
-package com.yuaihen.viewmodel.score
+package com.yuaihen.jetpack.score
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.yuaihen.viewmodel.R
-import com.yuaihen.viewmodel.databinding.ActivityScoreBinding
+import com.yuaihen.jetpack.R
+import com.yuaihen.jetpack.databinding.ActivityScoreBinding
 
 /**
  * Created by Yuaihen.

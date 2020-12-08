@@ -1,4 +1,4 @@
-package com.yuaihen.viewmodel.navigation
+package com.yuaihen.jetpack.navigation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.yuaihen.viewmodel.R
-import com.yuaihen.viewmodel.databinding.FragmentHomeBinding
+import com.yuaihen.jetpack.R
+import com.yuaihen.jetpack.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {

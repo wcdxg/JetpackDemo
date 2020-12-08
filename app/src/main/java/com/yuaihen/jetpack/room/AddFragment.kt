@@ -1,4 +1,4 @@
-package com.yuaihen.viewmodel.room
+package com.yuaihen.jetpack.room
 
 import android.content.Context
 import android.os.Bundle
@@ -11,7 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.yuaihen.viewmodel.R
+import com.yuaihen.jetpack.R
 import kotlinx.android.synthetic.main.fragment_add.*
 
 class AddFragment : Fragment() {
@@ -58,7 +58,7 @@ class AddFragment : Fragment() {
             val english = editTextEnglish.text.toString().trim()
             val chinese = editTextChinese.text.toString().trim()
             val word = Word(english, chinese)
-            viewModel.wordRepository.insertWord(word)
+            viewModel.insertWord(word)
             Navigation.findNavController(it).navigateUp()
 
             imm.hideSoftInputFromWindow(it.windowToken, 0)

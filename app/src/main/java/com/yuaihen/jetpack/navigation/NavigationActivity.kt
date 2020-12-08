@@ -1,12 +1,11 @@
-package com.yuaihen.viewmodel.navigation
+package com.yuaihen.jetpack.navigation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.yuaihen.viewmodel.R
+import com.yuaihen.jetpack.R
 
 /**
  * Navigation管理Fragment的切换

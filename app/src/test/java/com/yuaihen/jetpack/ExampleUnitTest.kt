@@ -1,4 +1,4 @@
-package com.yuaihen.viewmodel
+package com.yuaihen.jetpack
 
 import org.junit.Test
 

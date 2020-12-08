@@ -1,4 +1,4 @@
-package com.yuaihen.viewmodel.room
+package com.yuaihen.jetpack.room
 
 import android.app.Application
 import android.util.Log

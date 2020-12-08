@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.yuaihen.viewmodel.navigation.HomeFragment"
+        android:name="com.yuaihen.jetpack.navigation.HomeFragment"
         android:label="首页">
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.yuaihen.viewmodel.navigation.DetailFragment"
+        android:name="com.yuaihen.jetpack.navigation.DetailFragment"
         android:label="详情页">
         <action
             android:id="@+id/action_detailFragment_to_homeFragment"

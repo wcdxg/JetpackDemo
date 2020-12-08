@@ -1,4 +1,4 @@
-package com.yuaihen.viewmodel.navigation
+package com.yuaihen.jetpack.navigation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

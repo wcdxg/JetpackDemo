@@ -1,12 +1,11 @@
-package com.yuaihen.viewmodel.room
+package com.yuaihen.jetpack.room
 
 import android.os.Bundle
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.yuaihen.viewmodel.R
+import com.yuaihen.jetpack.R
 
 /**
  * Created by Yuaihen.

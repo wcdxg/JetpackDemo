@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 
-package com.yuaihen.viewmodel.room
-
+package com.yuaihen.jetpack.room
 import android.view.View
 import androidx.databinding.BindingAdapter
 

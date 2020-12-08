@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.yuaihen.viewmodel.navigation.MyViewModel" />
+            type="com.yuaihen.jetpack.navigation.MyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

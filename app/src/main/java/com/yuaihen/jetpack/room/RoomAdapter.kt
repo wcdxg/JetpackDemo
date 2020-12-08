@@ -1,4 +1,4 @@
-package com.yuaihen.viewmodel.room
+package com.yuaihen.jetpack.room
 
 import android.content.Intent
 import android.net.Uri
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.yuaihen.viewmodel.R
+import com.yuaihen.jetpack.R
 import kotlinx.android.synthetic.main.item_room_card.view.*
 
 /**
@@ -46,11 +46,11 @@ class RoomAdapter(
             if (isChecked) {
                 holder.itemView.chineseText.visibility = View.GONE
                 word.chineseInvisible = true
-                viewModel.wordRepository.updateWords(word)
+                viewModel.updateWords(word)
             } else {
                 holder.itemView.chineseText.visibility = View.VISIBLE
                 word.chineseInvisible = false
-                viewModel.wordRepository.updateWords(word)
+                viewModel.updateWords(word)
             }
         }
 

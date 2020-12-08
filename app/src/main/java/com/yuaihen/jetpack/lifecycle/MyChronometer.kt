@@ -1,4 +1,4 @@
-package com.yuaihen.viewmodel.lifecycle
+package com.yuaihen.jetpack.lifecycle
 
 import android.content.Context
 import android.os.SystemClock

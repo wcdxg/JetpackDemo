@@ -1,4 +1,4 @@
-package com.yuaihen.viewmodel.score
+package com.yuaihen.jetpack.score
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

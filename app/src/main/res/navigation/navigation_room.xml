@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/wordsFragment"
-        android:name="com.yuaihen.viewmodel.room.WordsFragment"
+        android:name="com.yuaihen.jetpack.room.WordsFragment"
         android:label="Words">
         <action
             android:id="@+id/action_wordsFragment_to_addFragment"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.yuaihen.viewmodel.room.AddFragment"
+        android:name="com.yuaihen.jetpack.room.AddFragment"
         android:label="Add"
         tools:layout="@layout/fragment_add" />
 </navigation>

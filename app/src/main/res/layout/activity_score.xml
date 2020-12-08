@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.yuaihen.viewmodel.score.ScoreViewModel" />
+            type="com.yuaihen.jetpack.score.ScoreViewModel" />
 
     </data>
 

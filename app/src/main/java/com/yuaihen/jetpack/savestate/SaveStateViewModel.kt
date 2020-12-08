@@ -1,9 +1,9 @@
-package com.yuaihen.viewmodel.savestate
+package com.yuaihen.jetpack.savestate
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.yuaihen.viewmodel.savestate.SaveStateActivity.Companion.KEY_NUMBER
+import com.yuaihen.jetpack.savestate.SaveStateActivity.Companion.KEY_NUMBER
 
 /**
  * Created by Yuaihen.
