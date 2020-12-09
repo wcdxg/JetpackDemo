@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.yuaihen.jetpack.bottomNavigationView.BottomNavigationActivity
 import com.yuaihen.jetpack.lifecycle.LifeCycleActivity
 import com.yuaihen.jetpack.navigation.NavigationActivity
 import com.yuaihen.jetpack.room.RoomActivity
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         const val NAVIGATION = 3
         const val LIFECYCLE = 4
         const val ROOM = 5
+        const val BOTTOM_NAVAGITION_VIEW = 6
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         navigationBtn.setOnClickListener(MyOnClickListener(NAVIGATION))
         lifeCycleBtn.setOnClickListener(MyOnClickListener(LIFECYCLE))
         roomBtn.setOnClickListener(MyOnClickListener(ROOM))
+        bottomNavigationBtn.setOnClickListener(MyOnClickListener(BOTTOM_NAVAGITION_VIEW))
     }
 
 
@@ -45,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                 NAVIGATION -> intent.setClass(applicationContext, NavigationActivity::class.java)
                 LIFECYCLE -> intent.setClass(applicationContext, LifeCycleActivity::class.java)
                 ROOM -> intent.setClass(applicationContext, RoomActivity::class.java)
+                BOTTOM_NAVAGITION_VIEW -> intent.setClass(
+                    applicationContext,
+                    BottomNavigationActivity::class.java
+                )
             }
 
             startActivity(intent)

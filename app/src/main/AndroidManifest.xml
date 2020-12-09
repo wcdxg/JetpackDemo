@@ -21,9 +21,10 @@
         <activity android:name="com.yuaihen.jetpack.savestate.SaveStateActivity" />
         <activity android:name="com.yuaihen.jetpack.lifecycle.LifeCycleActivity" />
         <activity android:name="com.yuaihen.jetpack.navigation.NavigationActivity" />
-        <activity android:name="com.yuaihen.jetpack.room.RoomActivity"
-            android:windowSoftInputMode="adjustNothing"
-            />
+        <activity
+            android:name="com.yuaihen.jetpack.room.RoomActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".bottomNavigationView.BottomNavigationActivity" />
     </application>
 
 </manifest>

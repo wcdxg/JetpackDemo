@@ -54,4 +54,13 @@
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="@+id/lifeCycleBtn"
         app:layout_constraintTop_toBottomOf="@+id/lifeCycleBtn" />
+
+    <Button
+        android:id="@+id/bottomNavigationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BottomNavigationView"
+        app:layout_constraintEnd_toEndOf="@+id/roomBtn"
+        app:layout_constraintStart_toStartOf="@+id/roomBtn"
+        app:layout_constraintTop_toBottomOf="@+id/roomBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
