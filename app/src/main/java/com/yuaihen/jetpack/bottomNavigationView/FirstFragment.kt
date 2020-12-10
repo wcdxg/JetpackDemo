@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.yuaihen.jetpack.R
 import kotlinx.android.synthetic.main.fragment_first.*
@@ -21,7 +23,11 @@ class FirstFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val viewModel = ViewModelProvider(this).get(FirstViewModel::class.java)
+
+        //生命周期与
+        val viewModel: FirstViewModel by activityViewModels()
+//        val viewModel: FirstViewModel by viewModels()
+//        val viewModel = ViewModelProvider(this).get(FirstViewModel::class.java)
         imageView.rotation = viewModel.rotate
         val objectAnimator = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 0f)
         objectAnimator.duration = 500

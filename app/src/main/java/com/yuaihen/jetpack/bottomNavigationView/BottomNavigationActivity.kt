@@ -1,7 +1,9 @@
 package com.yuaihen.jetpack.bottomNavigationView
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -22,5 +24,6 @@ class BottomNavigationActivity : AppCompatActivity() {
         val configuration = AppBarConfiguration.Builder(bottomNavigationView.menu).build()
         NavigationUI.setupActionBarWithNavController(this, navController!!, configuration)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
+
     }
 }
