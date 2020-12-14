@@ -25,6 +25,7 @@
             android:name="com.yuaihen.jetpack.room.RoomActivity"
             android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".bottomNavigationView.BottomNavigationActivity" />
+        <activity android:name=".workManager.WorkActivity" />
     </application>
 
 </manifest>

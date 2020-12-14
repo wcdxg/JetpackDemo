@@ -63,4 +63,15 @@
         app:layout_constraintEnd_toEndOf="@+id/roomBtn"
         app:layout_constraintStart_toStartOf="@+id/roomBtn"
         app:layout_constraintTop_toBottomOf="@+id/roomBtn" />
+
+    <Button
+        android:id="@+id/workerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Worker"
+        app:layout_constraintEnd_toEndOf="@+id/bottomNavigationBtn"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="@+id/bottomNavigationBtn"
+        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

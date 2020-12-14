@@ -10,6 +10,7 @@ import com.yuaihen.jetpack.navigation.NavigationActivity
 import com.yuaihen.jetpack.room.RoomActivity
 import com.yuaihen.jetpack.savestate.SaveStateActivity
 import com.yuaihen.jetpack.score.ScoreActivity
+import com.yuaihen.jetpack.workManager.WorkActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         const val LIFECYCLE = 4
         const val ROOM = 5
         const val BOTTOM_NAVAGITION_VIEW = 6
+        const val WOEKER = 7
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         lifeCycleBtn.setOnClickListener(MyOnClickListener(LIFECYCLE))
         roomBtn.setOnClickListener(MyOnClickListener(ROOM))
         bottomNavigationBtn.setOnClickListener(MyOnClickListener(BOTTOM_NAVAGITION_VIEW))
+        workerBtn.setOnClickListener(MyOnClickListener(WOEKER))
     }
 
 
@@ -51,6 +54,10 @@ class MainActivity : AppCompatActivity() {
                 BOTTOM_NAVAGITION_VIEW -> intent.setClass(
                     applicationContext,
                     BottomNavigationActivity::class.java
+                )
+                WOEKER -> intent.setClass(
+                    applicationContext,
+                    WorkActivity::class.java
                 )
             }
 
