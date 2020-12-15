@@ -1,7 +1,6 @@
 package com.yuaihen.jetpack.workManager
 
 import android.content.Context
-import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
@@ -12,10 +11,12 @@ import androidx.work.workDataOf
  */
 class MyWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
     override fun doWork(): Result {
-        val data = inputData.getString("hello")
-        Log.d("TAG", "doWork: start $data")
+        val name = inputData.getString("type")
         Thread.sleep(3000)
-        Log.d("TAG", "doWork: finish")
-        return Result.success(workDataOf("name" to "zhangsan"))
+        val sp =
+            applicationContext.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+        var number = sp.getInt(name, 0)
+        sp.edit().putInt(name, ++number).apply()
+        return Result.success(workDataOf("name" to "$name output"))
     }
 }
