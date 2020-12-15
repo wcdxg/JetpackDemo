@@ -1,7 +1,9 @@
 package com.yuaihen.jetpack.workManager
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.work.*
 import com.yuaihen.jetpack.databinding.ActivityWorkManagerBinding
 
@@ -29,6 +31,13 @@ class WorkActivity : AppCompatActivity() {
                 .setInputData(workDataOf("hello" to "this is worker"))
                 .build()
             workManager.enqueue(worker)
+
+            workManager.getWorkInfoByIdLiveData(worker.id).observe(this, Observer {
+                Log.d("TAG", "onCreate: ${it.state}")
+                if (it.state == WorkInfo.State.SUCCEEDED) {
+                    Log.d("TAG", "onCreate: ${it.outputData.keyValueMap["name"]}")
+                }
+            })
         }
     }
 }
